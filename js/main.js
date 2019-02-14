@@ -24,7 +24,7 @@ const main = () => {
       </section>
     `);
     console.log('GameScreen');
-      setInterval(buildGameOver,3000);
+    //setInterval(buildGameOver,3000);
 
     const width = document.querySelector('.game-screen').offsetWidth;
     const height = document.querySelector('.game-screen').offsetHeight;
@@ -32,8 +32,22 @@ const main = () => {
     canvasElement.setAttribute('width',width);
     canvasElement.setAttribute('height',height);
 
+    const game = new Game(canvasElement);
+    game.startLoop();
     
-
+    const setPlayerDirection = (event) => {
+      if (event.code === 'ArrowLeft'){
+        game.ball.setDirection(-1);
+      }
+      if (event.code === 'ArrowRight'){
+        game.ball.setDirection(1);
+      }
+    }
+    const setPlayerDirectionToZero = () =>{
+      game.ball.setDirection(0);
+    }
+    document.addEventListener('keydown',setPlayerDirection);
+    document.addEventListener('keyup',setPlayerDirectionToZero);
   };
 
   const buildGameOver = () => {

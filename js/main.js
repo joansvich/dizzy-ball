@@ -20,7 +20,11 @@ const main = () => {
   const buildGameScreen = () => {
     const gameScreen = buildDom(`
       <section class="game-screen">
-        <p class="score-text">Score: </p><p class="score-num">0</p>
+        <div class="info-text">
+          
+          <p class="score-text">Score: </p><p class="score-num">0</p>
+          <p class="level-text">Level: </p><p class="level-num">0</p>
+        </div>
         <canvas></canvas>
       </section>
     `);

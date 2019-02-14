@@ -64,6 +64,18 @@ section {
   width: 350px;
 }
 
+.info-text {
+  display: flex;
+}
+
+.score-text .score-num {
+  align-self: flex-start;
+}
+
+.level-text .level-num {
+  align-self: flex-end;
+}
+
 @media (min-width: 768px) {
   .container {
     max-width: 728px;

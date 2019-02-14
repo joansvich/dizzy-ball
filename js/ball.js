@@ -37,8 +37,19 @@ class Ball {
   }
 
   checkCollisionBlocks(block){
-    
+    const collideRight = block.xInicio < this.x+this.size/2;
+    const collideLeft = block.xFinal > this.x-this.size/2;
+    const collideTop = block.posY+block.y/2 > this.y-this.size/2;
+    const collideBottom = block.posY-block.y/2 < this.y+this.size/2;
+
+    if(collideRight && collideLeft && collideTop && collideBottom){
+      return true;
+    }
+
+    return false;
+
   }
+  
 
 
 

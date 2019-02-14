@@ -33,6 +33,7 @@ const main = () => {
     canvasElement.setAttribute('height',height);
 
     const game = new Game(canvasElement);
+    game.gameOverCallback(buildGameOver);
     game.startLoop();
     
     const setPlayerDirection = (event) => {
@@ -53,7 +54,7 @@ const main = () => {
     document.addEventListener('keydown',setPlayerDirection);
     document.addEventListener('keyup',setPlayerDirectionToZero);
   };
-
+  buildSplashScreen();
   const buildGameOver = () => {
     const gameOver = buildDom(`
       <h1>Game</h1> 
@@ -69,7 +70,7 @@ const main = () => {
   
 
 
-  buildSplashScreen();
+  
 
 }
 

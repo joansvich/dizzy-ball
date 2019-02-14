@@ -10,8 +10,8 @@ class Block {
     this.ctx = this.canvas.getContext('2d');
   }
 
-  update(){
-    this.posY++;
+  update(level){
+    this.posY = this.posY + level;
   };
 
   draw(){

@@ -27,8 +27,6 @@ class Ball {
 
   gainPoints(num){
     this.puntuation = this.puntuation + num;
-    let puntuation = document.getElementsByClassName('score-num');
-    puntuation.innerTEXT = this.puntuation;
   }
 
   setDirection(direction){
@@ -55,6 +53,11 @@ class Ball {
 
     return false;
 
+  }
+
+  printPuntuationCallback(){
+    
+    return this.puntuation;
   }
   
 

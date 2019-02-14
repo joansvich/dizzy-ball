@@ -27,6 +27,9 @@ const main = () => {
     console.log('GameScreen');
     //setInterval(buildGameOver,3000);
 
+    let scoreNum = document.querySelector('score-num');
+    
+
     const width = document.querySelector('.game-screen').offsetWidth;
     const height = document.querySelector('.game-screen').offsetHeight;
     const canvasElement = document.querySelector('canvas');

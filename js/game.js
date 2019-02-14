@@ -9,7 +9,8 @@ class Game {
     this.posY = 0;
     this.cont = 0;
     this.gameIsOver = false;
-    this.level = 200;
+    this.level = 1;
+    this.levelBool = false;
   };
 
 
@@ -18,13 +19,13 @@ class Game {
     //let cont = 0;
     this.ball = new Ball(this.canvas);
     const loop = () => {
-      if(this.cont===this.level || this.cont===0){
+      if(this.cont>200|| this.cont===0){
         this.cont=0;
         const xFinal = Math.random()*this.canvas.width-40;
         let block1 = new Block(0,xFinal,0,this.canvas);
         let iniciBlock2 = xFinal+40;
-        if (iniciBlock2 < 0) {
-          iniciBlock2 = 0;
+        if (iniciBlock2 < 40) {
+          iniciBlock2 = 40;
         }
         let block2 = new Block(iniciBlock2,this.canvas.width,0,this.canvas);
         
@@ -38,8 +39,20 @@ class Game {
       this.clearCanvas();
       this.drawCanvas();
       this.destroyBlocks();
-      this.cont++;
-      this.posY++;
+      this.cont = this.cont + this.level;
+      this.posY = this.posY + this.level;
+      console.log(this.cont);
+      console.log(this.level);
+      console.log(this.ball.puntuation);
+      if (this.ball.puntuation%4===0&& this.level<2.25){
+        if(this.levelBool){
+          this.level = this.level+0.25;
+          this.levelBool = false;
+        }
+      }
+      if (this.level === 2){
+        this.ball.speed = 5;
+      }
       if(!this.gameIsOver){
         window.requestAnimationFrame(loop);
       }
@@ -50,7 +63,7 @@ class Game {
   updateCanvas(){
     this.ball.update();
     this.blocks.forEach((block) => {
-      block.update();
+      block.update(this.level);
     })
   }
 
@@ -70,7 +83,8 @@ class Game {
       if(block.posY >= this.canvas.height){
         this.blocks.splice(index,1);
         console.log('Destrooy!');
-        this.ball.gainPoints(0,5)
+        this.levelBool = true;
+        this.ball.gainPoints(1);
       }
     })
   }

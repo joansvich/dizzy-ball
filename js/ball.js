@@ -10,6 +10,7 @@ class Ball {
     this.y = this.canvas.height - 40;
     this.speed = 3;
     this.direction = 0;
+    this.puntuation = 0;
   }
 
   update(){
@@ -22,6 +23,12 @@ class Ball {
     this.ctx.arc(this.x,this.y,this.size/2,0,2*Math.PI,true);
     this.ctx.fill();
     this.ctx.stroke();
+  }
+
+  gainPoints(num){
+    this.puntuation = this.puntuation + num;
+    let puntuation = document.getElementsByClassName('score-num');
+    puntuation.innerTEXT = this.puntuation;
   }
 
   setDirection(direction){

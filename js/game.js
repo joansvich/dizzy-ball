@@ -9,6 +9,7 @@ class Game {
     this.posY = 0;
     this.cont = 0;
     this.gameIsOver = false;
+    this.level = 200;
   };
 
 
@@ -17,8 +18,8 @@ class Game {
     //let cont = 0;
     this.ball = new Ball(this.canvas);
     const loop = () => {
-      if(this.cont%90===0 || this.cont===0){
-        console.log(this.cont);
+      if(this.cont===this.level || this.cont===0){
+        this.cont=0;
         const xFinal = Math.random()*this.canvas.width-40;
         let block1 = new Block(0,xFinal,0,this.canvas);
         let iniciBlock2 = xFinal+40;
@@ -36,6 +37,7 @@ class Game {
       this.updateCanvas(this.posY);
       this.clearCanvas();
       this.drawCanvas();
+      this.destroyBlocks();
       this.cont++;
       this.posY++;
       if(!this.gameIsOver){
@@ -62,6 +64,17 @@ class Game {
       block.draw();
     })
   }
+
+  destroyBlocks(){
+    this.blocks.forEach((block,index) => {
+      if(block.posY >= this.canvas.height){
+        this.blocks.splice(index,1);
+        console.log('Destrooy!');
+        this.ball.gainPoints(0,5)
+      }
+    })
+  }
+
 
   checkAllCollisions(){
     this.ball.checkScreen();

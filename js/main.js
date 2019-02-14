@@ -20,6 +20,7 @@ const main = () => {
   const buildGameScreen = () => {
     const gameScreen = buildDom(`
       <section class="game-screen">
+        <p class="score-text">Score: </p><p class="score-num">0</p>
         <canvas></canvas>
       </section>
     `);
@@ -66,11 +67,6 @@ const main = () => {
     const restartButton = document.querySelector('button');
     restartButton.addEventListener('click',buildGameScreen);
   }
-
-  
-
-
-  
 
 }
 

@@ -8,7 +8,7 @@ class Ball {
     this.ctx = this.canvas.getContext('2d');
     this.x = this.canvas.width/2;
     this.y = this.canvas.height - 40;
-    this.speed = 5;
+    this.speed = 3;
     this.direction = 0;
   }
 
@@ -17,9 +17,7 @@ class Ball {
   }
 
   draw(){
-
     this.ctx.fillStyle = 'blue';
-    //this.ctx.fillRect(this.x, this.y, this.size, this.size)
     this.ctx.beginPath();
     this.ctx.arc(this.x,this.y,this.size/2,0,2*Math.PI,true);
     this.ctx.fill();
@@ -38,8 +36,8 @@ class Ball {
     }
   }
 
-  checkCollisionBlock(){
-
+  checkCollisionBlocks(block){
+    
   }
 
 

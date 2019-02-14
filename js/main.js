@@ -36,11 +36,15 @@ const main = () => {
     game.startLoop();
     
     const setPlayerDirection = (event) => {
+      console.log(event);
       if (event.code === 'ArrowLeft'){
         game.ball.setDirection(-1);
       }
       if (event.code === 'ArrowRight'){
         game.ball.setDirection(1);
+      }
+      if(event.code === 'Space'){
+        alert('PAUSE');
       }
     }
     const setPlayerDirectionToZero = () =>{

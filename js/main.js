@@ -7,7 +7,7 @@ const main = () => {
     main.innerHTML = html;
     return main;
   };
-  
+
   const buildSplashScreen = () => {
     const splashScreen = buildDom(`
       <h1>Dizzy Ball</h1>
@@ -42,12 +42,13 @@ const main = () => {
     game.startLoop();
     function updateDom(){
       let scoreNum = document.querySelector('.score-num');
+      let levelNum = document.querySelector('.level-num');
+      levelNum.innerHTML = game.levelNum;
       scoreNum.innerHTML = game.ball.puntuation;
     }
     
     
     const setPlayerDirection = (event) => {
-      console.log(event);
       if (event.code === 'ArrowLeft'){
         game.ball.setDirection(-1);
       }
@@ -57,9 +58,28 @@ const main = () => {
       if(event.code === 'Space'){
         alert('PAUSE');
       }
+      if(game.ball2) {
+        if (event.code === 'KeyA'){
+          game.ball2.setDirection(-1);
+        }
+        if (event.code === 'KeyD'){
+          game.ball2.setDirection(1);
+        }
+      }
     }
-    const setPlayerDirectionToZero = () =>{
-      game.ball.setDirection(0);
+    const setPlayerDirectionToZero = (event) =>{
+      console.log(event.code)
+      if(event.code === 'ArrowLeft'||event.code === 'ArrowRight'){
+        game.ball.setDirection(0);
+      }
+      if(event.code === 'KeyA' || event.code === 'KeyD'){
+        if(game.ball2){
+          game.ball2.setDirection(0);
+        }
+      }
+      //añadir que keyup es la que se hace
+      
+      
     }
     document.addEventListener('keydown',setPlayerDirection);
     document.addEventListener('keyup',setPlayerDirectionToZero);

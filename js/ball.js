@@ -2,13 +2,14 @@
 
 class Ball {
 
-  constructor(canvas){
+  constructor(canvas,color){
     this.size = 20;
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.x = this.canvas.width/2;
     this.y = this.canvas.height - 40;
     this.speed = 3;
+    this.color = color;
     this.direction = 0;
     this.puntuation = 0;
   }
@@ -18,7 +19,7 @@ class Ball {
   }
 
   draw(){
-    this.ctx.fillStyle = 'blue';
+    this.ctx.fillStyle = this.color;
     this.ctx.beginPath();
     this.ctx.arc(this.x,this.y,this.size/2,0,2*Math.PI,true);
     this.ctx.fill();

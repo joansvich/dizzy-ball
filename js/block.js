@@ -1,10 +1,11 @@
 'use strict';
 
 class Block {
-  constructor(xInicio,xFinal,posY,canvas){
+  constructor(xInicio,xFinal,color,posY,canvas){
     this.xInicio = xInicio;
     this.xFinal = xFinal;
     this.y = 10;
+    this.color = color;
     this.posY = posY;
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
@@ -15,7 +16,7 @@ class Block {
   };
 
   draw(){
-    this.ctx.fillStyle = 'red';
+    this.ctx.fillStyle = this.color;
     let sizeX = this.xFinal-this.xInicio;
     this.ctx.fillRect(this.xInicio,this.posY,sizeX,this.y);
   };

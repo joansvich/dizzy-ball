@@ -40,15 +40,15 @@ class Game {
   }
 
   createBlocks(){
-    if(this.cont>200|| this.cont===0){
+    if(this.cont>250|| this.cont===0){
       if(this.ball2){
         if(this.switchBlocks){
           this.cont=0;
-          const xFinal = Math.random()*this.canvas.width-40;
+          const xFinal = Math.random()*this.canvas.width-80;
           let block1 = new Block(0,xFinal,'red',0,this.canvas);
-          let iniciBlock2 = xFinal+40;
-          if (iniciBlock2 < 40) {
-          iniciBlock2 = 40;
+          let iniciBlock2 = xFinal+80;
+          if (iniciBlock2 < 80) {
+          iniciBlock2 = 80;
           }
           let block2 = new Block(iniciBlock2,this.canvas.width,'red',0,this.canvas);
           this.blocks.push(block1);
@@ -56,11 +56,11 @@ class Game {
           this.switchBlocks = false;
         }else{
           this.cont=0;
-          const xFinal = Math.random()*this.canvas.width-40;
+          const xFinal = Math.random()*this.canvas.width-80;
           let block1 = new Block(0,xFinal,'green',0,this.canvas);
-          let iniciBlock2 = xFinal+40;
-          if (iniciBlock2 < 40) {
-          iniciBlock2 = 40;
+          let iniciBlock2 = xFinal+80;
+          if (iniciBlock2 < 80) {
+          iniciBlock2 = 80;
           }
           let block2 = new Block(iniciBlock2,this.canvas.width,'green',0,this.canvas);
           this.blocks2.push(block1);
@@ -69,11 +69,11 @@ class Game {
         }
       }else{
         this.cont=0;
-        const xFinal = Math.random()*this.canvas.width-40;
+        const xFinal = Math.random()*this.canvas.width-80;
         let block1 = new Block(0,xFinal,'red',0,this.canvas);
-        let iniciBlock2 = xFinal+40;
-        if (iniciBlock2 < 40) {
-         iniciBlock2 = 40;
+        let iniciBlock2 = xFinal+80;
+        if (iniciBlock2 < 80) {
+         iniciBlock2 = 80;
         }
         let block2 = new Block(iniciBlock2,this.canvas.width,'red',0,this.canvas);
         this.blocks.push(block1);
@@ -86,14 +86,14 @@ class Game {
 
   levelMax(){
     if(this.levelNum === 2 && !this.ball2){
-      this.isLevelMax = true;
+      //this.isLevelMax = true;
       this.ball2 = new Ball(this.canvas,'yellow');
     }
   }
 
   updateCanvas(){
     this.ball.update();
-    if(this.isLevelMax){
+    if(this.ball2){
       this.ball2.update();
     }
     this.blocks.forEach((block) => {
@@ -109,7 +109,7 @@ class Game {
   }
 
   updateScore(){
-    if (this.ball.puntuation%4===0&& this.level<2.25){
+    if (this.ball.puntuation%4===0 && this.level<2.75){
       if(this.levelBool){
         this.level = this.level+0.25;
         this.levelBool = false;
@@ -130,7 +130,11 @@ class Game {
       break;
       case 2: this.levelNum = 5;
       break;
-      case 2.25: this.levelNum = 'MAX';
+      case 2.25: this.levelNum = 6;
+      break;
+      case 2.50: this.levelNum = 7;
+      break;
+      case 2.75: this.levelNum = 'MAXIIIMUM!'
       break;
     }
   }
@@ -141,7 +145,7 @@ class Game {
 
   drawCanvas(){
     this.ball.draw();
-    if(this.isLevelMax){
+    if(this.ball2){
       this.ball2.draw();
     }
     this.blocks.forEach((block) => {

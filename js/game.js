@@ -19,31 +19,17 @@ class Game {
     //let cont = 0;
     this.ball = new Ball(this.canvas);
     const loop = () => {
-      if(this.cont>200|| this.cont===0){
-        this.cont=0;
-        const xFinal = Math.random()*this.canvas.width-40;
-        let block1 = new Block(0,xFinal,0,this.canvas);
-        let iniciBlock2 = xFinal+40;
-        if (iniciBlock2 < 40) {
-          iniciBlock2 = 40;
-        }
-        let block2 = new Block(iniciBlock2,this.canvas.width,0,this.canvas);
-        
-        this.blocks.push(block1);
-        this.blocks.push(block2);
-        
-      }
-      
+
+      this.updateDom();
+      this.createBlocks();
       this.checkAllCollisions();
-      this.updateCanvas(this.posY);
+      this.updateCanvas();
       this.clearCanvas();
       this.drawCanvas();
       this.destroyBlocks();
+      
       this.cont = this.cont + this.level;
       this.posY = this.posY + this.level;
-      console.log(this.cont);
-      console.log(this.level);
-      console.log(this.ball.puntuation);
       if (this.ball.puntuation%4===0&& this.level<2.25){
         if(this.levelBool){
           this.level = this.level+0.25;
@@ -58,6 +44,22 @@ class Game {
       }
     }
     window.requestAnimationFrame(loop);
+  }
+
+  createBlocks(){
+    if(this.cont>200|| this.cont===0){
+      this.cont=0;
+      const xFinal = Math.random()*this.canvas.width-40;
+      let block1 = new Block(0,xFinal,0,this.canvas);
+      let iniciBlock2 = xFinal+40;
+      if (iniciBlock2 < 40) {
+        iniciBlock2 = 40;
+      }
+      let block2 = new Block(iniciBlock2,this.canvas.width,0,this.canvas);
+      
+      this.blocks.push(block1);
+      this.blocks.push(block2);
+    }
   }
 
   updateCanvas(){
@@ -97,15 +99,18 @@ class Game {
         console.log('You lose');
         this.cont = 0;
         this.posY = 0;
-        this.lose();
+        this.lose(this.ball.puntuation);
         this.gameIsOver = true;
       }
     })
   }
 
+  updateDom(callback){
+    this.updateDom = callback
+  }
+
   gameOverCallback(callback){
     this.lose = callback;
-    
   }
 
 

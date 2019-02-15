@@ -19,8 +19,6 @@ class Game {
 
 
   startLoop(){
-    //let posY = 0;
-    //let cont = 0;
     this.ball = new Ball(this.canvas,'blue');
     const loop = () => {
 

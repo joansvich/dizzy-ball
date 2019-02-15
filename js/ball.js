@@ -12,6 +12,7 @@ class Ball {
     this.color = color;
     this.direction = 0;
     this.puntuation = 0;
+    
   }
 
   update(){

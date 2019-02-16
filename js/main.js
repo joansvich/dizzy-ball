@@ -8,10 +8,11 @@ const main = () => {
     return main;
   };
 
+
   const buildSplashScreen = () => {
     const splashScreen = buildDom(`
       <h1>Dizzy Ball</h1>
-      <button>Start</button>
+      <button><span>Start</span></button>
     `);
     const startButton = document.querySelector('button');
     startButton.addEventListener('click',buildGameScreen);
@@ -87,8 +88,7 @@ const main = () => {
   buildSplashScreen();
   const buildGameOver = (score) => {
     const gameOver = buildDom(`
-      <h1>Game</h1> 
-      <h1>Over</h1>
+      <h1>Game Over</h1> 
       <p>Your Score: </p><p class="score-num">0</p>
       <button>Restart</button>
     `);

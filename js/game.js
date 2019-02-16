@@ -31,6 +31,7 @@ class Game {
       this.destroyBlocks();
       this.updateScore();
       this.levelMax();
+      
     
       if(!this.gameIsOver){
         window.requestAnimationFrame(loop);

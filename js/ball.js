@@ -2,7 +2,7 @@
 
 class Ball {
 
-  constructor(canvas,color){
+  constructor(canvas,pj){
     //this.size = 20;
     this.sizeX = 46;
     this.sizeY = 94;
@@ -11,11 +11,11 @@ class Ball {
     this.x = this.canvas.width/2;
     this.y = this.canvas.height - this.sizeY;
     this.speed = 4;
-    this.color = color;
+    this.typePj = pj;
     this.direction = 0;
     this.puntuation = 0;
-    this.image = document.getElementById('source');
-    
+    this.imagePj1 = document.getElementById('imagePj1');
+    this.imagePj2 = document.getElementById('imagePj2');
   }
 
   update(){
@@ -23,7 +23,12 @@ class Ball {
   }
 
   draw(){
-    this.ctx.drawImage(this.image, this.x - this.sizeX/2, this.y);
+    if(this.typePj === 1){
+      this.ctx.drawImage(this.imagePj1, this.x - this.sizeX/2, this.y);
+    }else if(this.typePj === 2){
+      this.ctx.drawImage(this.imagePj2, this.x - this.sizeX/2, this.y);
+    }
+    
     /*this.ctx.fillStyle = this.color;
     this.ctx.fillRect(this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY)*/
 

@@ -19,7 +19,7 @@ class Game {
 
 
   startLoop(){
-    this.ball = new Ball(this.canvas,'blue');
+    this.ball = new Ball(this.canvas,1);
     const loop = () => {
 
       this.updateDom();
@@ -87,7 +87,7 @@ class Game {
   levelMax(){
     if(this.levelNum === 2 && !this.ball2){
       //this.isLevelMax = true;
-      this.ball2 = new Ball(this.canvas,'yellow');
+      this.ball2 = new Ball(this.canvas,2);
     }
   }
 

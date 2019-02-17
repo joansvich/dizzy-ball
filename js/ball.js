@@ -9,33 +9,47 @@ class Ball {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.x = this.canvas.width/2;
-    this.y = this.canvas.height - this.sizeY;
+    this.y = this.canvas.height - this.sizeY-26;
     this.speed = 4;
+    this.cont = 0;
     this.typePj = pj;
     this.direction = 0;
     this.puntuation = 0;
-    this.imagePj1 = document.getElementById('imagePj1');
-    this.imagePj2 = document.getElementById('imagePj2');
+    this.imageSprite = document.getElementById('spriteImage');
+    this.imageSpriteLeft = document.getElementById('spriteImageLeft');
+    this.imageSpriteRight = document.getElementById('spriteImageRight');
+    this.position=0;
   }
 
   update(){
     this.x = this.x + this.direction * this.speed;
   }
 
+  modifyPosition(){
+    if(this.cont>15){
+      if (this.position < 92)
+        { this.position = this.position + 46;}
+      else
+        { this.position = 46; }
+      this.cont=0;
+    }
+    this.cont++;
+  }
+  
   draw(){
-    if(this.typePj === 1){
-      this.ctx.drawImage(this.imagePj1, this.x - this.sizeX/2, this.y);
-    }else if(this.typePj === 2){
-      this.ctx.drawImage(this.imagePj2, this.x - this.sizeX/2, this.y);
+    if(this.direction===0){
+      this.ctx.drawImage(this.imageSprite, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
+      this.modifyPosition();
+    }
+    if(this.direction===-1){
+      this.ctx.drawImage(this.imageSpriteLeft, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
+      this.modifyPosition();
+    }
+    if(this.direction===1){
+      this.ctx.drawImage(this.imageSpriteRight, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
+      this.modifyPosition();
     }
     
-    /*this.ctx.fillStyle = this.color;
-    this.ctx.fillRect(this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY)*/
-
-    // this.ctx.beginPath();
-    // this.ctx.arc(this.x,this.y,this.size/2,0,2*Math.PI,true);
-    // this.ctx.fill();
-    // this.ctx.stroke();
   }
 
   gainPoints(num){

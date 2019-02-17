@@ -78,9 +78,6 @@ const main = () => {
           game.ball2.setDirection(0);
         }
       }
-      //añadir que keyup es la que se hace
-      
-      
     }
     document.addEventListener('keydown',setPlayerDirection);
     document.addEventListener('keyup',setPlayerDirectionToZero);
@@ -90,7 +87,7 @@ const main = () => {
     const gameOver = buildDom(`
       <h1>Game Over</h1> 
       <p>Your Score: </p><p class="score-num">0</p>
-      <button>Restart</button>
+      <button><span>Restart</span></button>
     `);
     let scoreNum = document.querySelector('.score-num');
     scoreNum.innerHTML = score;

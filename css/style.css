@@ -84,10 +84,13 @@ section {
   align-self: flex-start;
 }
 .score-num {
-  align-self: flex-start;
+  align-self: center;
 }
 
-.level-text .level-num {
+.level-text {
+  align-self: flex-end;
+}
+.level-num {
   align-self: flex-end;
 }
 
@@ -98,6 +101,20 @@ section {
   }
 }
 */
+
+#imageDemoSprite {
+  height: 94px;
+  width: 46px;
+  background: url("../sprite-pj.png") 0px 0px;
+}
+
+#bern{
+    width:46px;
+    height:94px;
+    margin:auto;  
+    background: red;/* Temporal, sólo para guiarnos */
+  
+}
 
 
 

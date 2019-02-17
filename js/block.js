@@ -19,6 +19,7 @@ class Block {
     this.ctx.fillStyle = this.color;
     let sizeX = this.xFinal-this.xInicio;
     this.ctx.fillRect(this.xInicio,this.posY,sizeX,this.y);
+    this.ctx.stroke();
   };
 
 }

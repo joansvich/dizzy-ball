@@ -73,6 +73,8 @@ section {
   padding: auto;
   height: 90vh;
   width: 400px;
+  background-image: url("../bg-kitchen.jpg");
+  background-size: 400px 90vh;
 }
 
 .info-text {
@@ -173,5 +175,5 @@ button:hover span:after {
 /* ---- section ---- */
 
 canvas {
-  
+  background-image: url("../");
 }

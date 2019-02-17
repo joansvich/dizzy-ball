@@ -3,7 +3,6 @@
 class Ball {
 
   constructor(canvas,pj){
-    //this.size = 20;
     this.sizeX = 46;
     this.sizeY = 94;
     this.canvas = canvas;
@@ -49,7 +48,7 @@ class Ball {
       this.ctx.drawImage(this.imageSpriteRight, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
       this.modifyPosition();
     }
-    
+  
   }
 
   gainPoints(num){
@@ -87,7 +86,4 @@ class Ball {
     return this.puntuation;
   }
   
-
-
-
 }

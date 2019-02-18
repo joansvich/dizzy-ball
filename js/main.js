@@ -30,7 +30,7 @@ const main = () => {
           <p class="level-text">Level: </p><p class="level-num">0</p>
         </div>
         <canvas></canvas>
-        <div id="button-on-mobile"><button id="btLeft"></button><button id="btRight"></button></div>
+        <div id="button-on-mobile"><button id="btLeft"><button id="btCenter"></button></button><button id="btRight"></button></div>
       </section>
     `);
     console.log('GameScreen');
@@ -99,10 +99,11 @@ const main = () => {
     document.addEventListener('keyup',setPlayerDirectionToZero);
     const btLeft = document.querySelector('#btLeft');
     btLeft.addEventListener('click',moveLeft);
-    btLeft.addEventListener('mouseup',moveToZero);
+    const btCenter = document.querySelector('#btCenter');
+    btCenter.addEventListener('click',moveToZero);
     const btRight = document.querySelector('#btRight');
     btRight.addEventListener('click',moveRight);  
-    btRight.addEventListener('mouseup',moveToZero);
+
   };
   
   const buildGameOver = (score) => {

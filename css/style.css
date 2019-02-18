@@ -134,10 +134,11 @@ p {
 
 #button-on-mobile button {
   padding: 50px;
-  width: 28%;
+  width: 45%;
   background: transparent;
   border: none !important;
   font-size:0;
+  outline:none;
 }
 
 

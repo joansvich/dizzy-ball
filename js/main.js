@@ -30,7 +30,7 @@ const main = () => {
           <p class="level-text">Level: </p><p class="level-num">0</p>
         </div>
         <canvas></canvas>
-        <div id="button-on-mobile"><button id="btLeft"><button id="btCenter"></button></button><button id="btRight"></button></div>
+        <div id="button-on-mobile"><button id="btLeft"></button><button id="btRight"></button></div>
       </section>
     `);
     console.log('GameScreen');
@@ -83,10 +83,7 @@ const main = () => {
           game.ball2.setDirection(0);
         }
       }
-    }
-
-  
-    
+    }  
     const moveLeft = () => {
       game.ball.setDirection(-1);
     }
@@ -100,14 +97,12 @@ const main = () => {
     document.addEventListener('keydown',setPlayerDirection);
     document.addEventListener('keyup',setPlayerDirectionToZero);
     const btLeft = document.querySelector('#btLeft');
-    btLeft.addEventListener('keydown',moveLeft);
-    const btCenter = document.querySelector('#btCenter');
-    btCenter.addEventListener('click',moveToZero);
+    btLeft.addEventListener('touchstart',moveLeft);
+    btLeft.addEventListener('touchend',moveToZero);
     const btRight = document.querySelector('#btRight');
-    btRight.addEventListener('keydown',moveRight);  
-
-    btRight.ontouchstart = this.moveRight;
-    btRight.ontouchend = this.moveToZero;
+    btRight.addEventListener('touchstart',moveRight);
+    btRight.addEventListener('touchend',moveToZero);
+    
   };
   
   const buildGameOver = (score) => {

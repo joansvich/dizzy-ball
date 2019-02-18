@@ -7,6 +7,7 @@ class Game {
     this.ball;
     this.blocks = [];
     this.blocks2 = [];
+    this.enemies = [];
     this.posY = 0;
     this.cont = 0;
     this.gameIsOver = false;
@@ -15,6 +16,7 @@ class Game {
     this.levelBool = false;
     this.isLevelMax = false;
     this.switchBlocks = true;
+    this.contEnemies = 0;
     this.body = document.querySelector("body");
   };
 
@@ -25,6 +27,7 @@ class Game {
 
       this.updateDom();
       this.createBlocks();
+      this.randomEnemies();
       this.checkAllCollisions();
       this.updateCanvas();
       this.clearCanvas();
@@ -32,6 +35,7 @@ class Game {
       this.destroyBlocks();
       this.updateScore();
       this.levelMax();
+      
       if(this.isLevelMax === true){
         this.body.setAttribute("style", `
             -webkit-transform: rotate(360deg);
@@ -94,6 +98,15 @@ class Game {
     }
   }
 
+  randomEnemies() {
+    if(this.contEnemies%200===0){
+      let posXEnemie = Math.random()*this.canvas.width-40;
+      let enemie = new Enemie(posXEnemie,0,this.canvas);
+      this.enemies.push(enemie);
+      console.log('Kniiiveee');
+    }
+  }
+
   levelMax(){
     if(this.levelNum === 2 && !this.ball2){
       this.ball2 = new Ball(this.canvas,2);
@@ -113,8 +126,14 @@ class Game {
         block.update(this.level);
       })
     }
+    if(this.enemies.length>0){
+      this.enemies.forEach((enemie) => {
+        enemie.update();
+      })
+    }
     this.cont = this.cont + this.level;
     this.posY = this.posY + this.level;
+    this.contEnemies++;
   }
 
   updateScore(){
@@ -168,6 +187,11 @@ class Game {
     if(this.ball2){
       this.blocks2.forEach((block) => {
         block.draw();
+      })
+    }
+    if(this.enemies.length>0){
+      this.enemies.forEach((enemie) => {
+        enemie.draw();
       })
     }
   }

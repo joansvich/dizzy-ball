@@ -11,10 +11,11 @@ const main = () => {
 
   const buildSplashScreen = () => {
     const splashScreen = buildDom(`
-      <h1>Dizzy Ball</h1>
+      <img id="logo" src="../logo.png">
       <button id="startButton"><span>Start</span></button>
       <button id="rulesButton"><span>Rules</span></button>
     `);
+    console.log(navigator.platform);
     const startButton = document.querySelector('#startButton');
     startButton.addEventListener('click',buildGameScreen);
 
@@ -52,6 +53,7 @@ const main = () => {
       scoreNum.innerHTML = game.ball.puntuation;
     }
     
+  
     
     const setPlayerDirection = (event) => {
       console.log('hi');

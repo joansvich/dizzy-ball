@@ -69,7 +69,35 @@ p {
   border: 1px dotted blue;
 }
 
-section {
+#rules {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+  margin: 0 auto;
+  max-width: 400px;
+  height: 90vh;
+  
+}
+
+#rules section {
+  background-image: none;
+  max-width: 100%;
+  height: auto;
+}
+#rules p{
+  padding: 5px;
+  width: 400px;
+  text-align: center;
+}
+
+#rules p span{
+  width: 400px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.game-screen {
   margin: auto;
   padding: auto;
   height: 90vh;

@@ -12,10 +12,14 @@ const main = () => {
   const buildSplashScreen = () => {
     const splashScreen = buildDom(`
       <h1>Dizzy Ball</h1>
-      <button><span>Start</span></button>
+      <button id="startButton"><span>Start</span></button>
+      <button id="rulesButton"><span>Rules</span></button>
     `);
-    const startButton = document.querySelector('button');
+    const startButton = document.querySelector('#startButton');
     startButton.addEventListener('click',buildGameScreen);
+
+    const rulesButton = document.querySelector('#rulesButton');
+    rulesButton.addEventListener('click',buildRulesScreen);
   };
 
   const buildGameScreen = () => {
@@ -83,7 +87,7 @@ const main = () => {
     document.addEventListener('keydown',setPlayerDirection);
     document.addEventListener('keyup',setPlayerDirectionToZero);
   };
-  buildSplashScreen();
+  
   const buildGameOver = (score) => {
     const gameOver = buildDom(`
       <h1>Game Over</h1> 
@@ -95,6 +99,45 @@ const main = () => {
     const restartButton = document.querySelector('button');
     restartButton.addEventListener('click',buildGameScreen);
   }
+
+  const buildRulesScreen = () => {
+    const rulesScreen = buildDom(`
+    <div id="rules">
+      <h1>Rules</h1>
+      <section>
+      <div>
+      <p><span>OBJETIVO: </span></p>
+      <p>Llegar lo más lejos sin colisionar contra los bloques</p>
+      </div>
+      </section>
+      <section>
+      <div>
+      <p><span>CONTROLES:</span></p>
+      <ul>
+        <li>Flechas derecha e izquierda para mover el personaje pepinillo</li>
+        <li>Letras A y D para mover el personaje berenjena</li>
+      </ul>
+      </div>
+      </section>
+      <section>
+      <div>
+      <p><span>COMPLICACIONES</span></p>
+      <p>Tendrás que tener en cuenta lo siguiente:</p>
+      <ul>
+        <li>El personaje pepinillo es inmune a los bloques lilas</li>
+        <li>El personaje berenjena es inmune a los bloques rojos</li>
+      </ul>
+      </div>
+      </section>
+      <p><span>SUERTE!</span></p>
+      <button id="initialButton"><span>Inicio</span></button>
+    </div>
+    `);
+    const initialButton = document.querySelector('#initialButton');
+    initialButton.addEventListener('click',buildSplashScreen);
+  }
+
+  buildSplashScreen();
 
 }
 

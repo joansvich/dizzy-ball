@@ -25,7 +25,7 @@ class Game {
 
       this.updateDom();
       this.createBlocks();
-      this.checkAllCollisions();
+      //this.checkAllCollisions();
       this.updateCanvas();
       this.clearCanvas();
       this.drawCanvas();

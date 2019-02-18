@@ -84,6 +84,8 @@ const main = () => {
         }
       }
     }
+
+  
     
     const moveLeft = () => {
       game.ball.setDirection(-1);
@@ -98,12 +100,14 @@ const main = () => {
     document.addEventListener('keydown',setPlayerDirection);
     document.addEventListener('keyup',setPlayerDirectionToZero);
     const btLeft = document.querySelector('#btLeft');
-    btLeft.addEventListener('click',moveLeft);
+    btLeft.addEventListener('keydown',moveLeft);
     const btCenter = document.querySelector('#btCenter');
     btCenter.addEventListener('click',moveToZero);
     const btRight = document.querySelector('#btRight');
-    btRight.addEventListener('click',moveRight);  
+    btRight.addEventListener('keydown',moveRight);  
 
+    btRight.ontouchstart = this.moveRight;
+    btRight.ontouchend = this.moveToZero;
   };
   
   const buildGameOver = (score) => {

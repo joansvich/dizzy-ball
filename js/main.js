@@ -11,7 +11,7 @@ const main = () => {
 
   const buildSplashScreen = () => {
     const splashScreen = buildDom(`
-      <img id="logo" src="../logo.png">
+      <img id="logo" src="./logo.png">
       <button id="startButton"><span>Start</span></button>
       <button id="rulesButton"><span>Rules</span></button>
     `);

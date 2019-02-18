@@ -98,10 +98,10 @@ const main = () => {
     document.addEventListener('keydown',setPlayerDirection);
     document.addEventListener('keyup',setPlayerDirectionToZero);
     const btLeft = document.querySelector('#btLeft');
-    btLeft.addEventListener('mousedown',moveLeft);
+    btLeft.addEventListener('click',moveLeft);
     btLeft.addEventListener('mouseup',moveToZero);
     const btRight = document.querySelector('#btRight');
-    btRight.addEventListener('mousedown',moveRight);  
+    btRight.addEventListener('click',moveRight);  
     btRight.addEventListener('mouseup',moveToZero);
   };
   

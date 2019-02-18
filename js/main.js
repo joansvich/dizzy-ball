@@ -30,11 +30,10 @@ const main = () => {
           <p class="level-text">Level: </p><p class="level-num">0</p>
         </div>
         <canvas></canvas>
+        <div id="button-on-mobile"><button id="btLeft"></button><button id="btRight"></button></div>
       </section>
     `);
     console.log('GameScreen');
-    //setInterval(buildGameOver,3000);
-
     const width = document.querySelector('.game-screen').offsetWidth;
     const height = document.querySelector('.game-screen').offsetHeight;
     const canvasElement = document.querySelector('canvas');
@@ -55,6 +54,7 @@ const main = () => {
     
     
     const setPlayerDirection = (event) => {
+      console.log('hi');
       if (event.code === 'ArrowLeft'){
         game.ball.setDirection(-1);
       }
@@ -84,8 +84,25 @@ const main = () => {
         }
       }
     }
+    
+    const moveLeft = () => {
+      game.ball.setDirection(-1);
+    }
+    const moveRight = () => {
+      game.ball.setDirection(1);
+    }
+    const moveToZero = () => {
+      game.ball.setDirection(0);
+    }
+
     document.addEventListener('keydown',setPlayerDirection);
     document.addEventListener('keyup',setPlayerDirectionToZero);
+    const btLeft = document.querySelector('#btLeft');
+    btLeft.addEventListener('mousedown',moveLeft);
+    btLeft.addEventListener('mouseup',moveToZero);
+    const btRight = document.querySelector('#btRight');
+    btRight.addEventListener('mousedown',moveRight);  
+    btRight.addEventListener('mouseup',moveToZero);
   };
   
   const buildGameOver = (score) => {

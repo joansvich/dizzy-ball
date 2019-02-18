@@ -125,6 +125,23 @@ p {
   align-self: flex-end;
 }
 
+#button-on-mobile {
+  margin: -140px 0;
+  position: relative;
+  display: block;;
+  z-index: 10;
+}
+
+#button-on-mobile button {
+  padding: 50px;
+  width: 45%;
+  background: transparent;
+  border: none !important;
+  font-size:0;
+}
+
+
+
 /*@media (min-width: 768px) {
   .container {
     max-width: 400px;

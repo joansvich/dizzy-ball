@@ -9,14 +9,17 @@ class Ball {
     this.ctx = this.canvas.getContext('2d');
     this.x = this.canvas.width/2;
     this.y = this.canvas.height - this.sizeY-26;
-    this.speed = 4;
+    this.speed = 5;
     this.cont = 0;
     this.typePj = pj;
     this.direction = 0;
     this.puntuation = 0;
-    this.imageSprite = document.getElementById('spriteImage');
-    this.imageSpriteLeft = document.getElementById('spriteImageLeft');
-    this.imageSpriteRight = document.getElementById('spriteImageRight');
+    this.spritePj1 = document.getElementById('spritePj1');
+    this.spritePj1Left = document.getElementById('spritePj1Left');
+    this.spritePj1Right = document.getElementById('spritePj1Right');
+    this.spritePj2 = document.getElementById('spritePj2');
+    this.spritePj2Left = document.getElementById('spritePj2Left');
+    this.spritePj2Right = document.getElementById('spritePj2Right');
     this.position=0;
   }
 
@@ -36,17 +39,33 @@ class Ball {
   }
   
   draw(){
-    if(this.direction===0){
-      this.ctx.drawImage(this.imageSprite, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
-      this.modifyPosition();
+    if(this.typePj===1){
+      if(this.direction===0){ 
+        this.ctx.drawImage(this.spritePj1, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
+        this.modifyPosition();
+      }
+      if(this.direction===-1){
+        this.ctx.drawImage(this.spritePj1Left, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
+        this.modifyPosition();
+      }
+      if(this.direction===1){
+        this.ctx.drawImage(this.spritePj1Right, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
+        this.modifyPosition();
+      }
     }
-    if(this.direction===-1){
-      this.ctx.drawImage(this.imageSpriteLeft, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
-      this.modifyPosition();
-    }
-    if(this.direction===1){
-      this.ctx.drawImage(this.imageSpriteRight, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
-      this.modifyPosition();
+    if(this.typePj===2){
+      if(this.direction===0){ 
+        this.ctx.drawImage(this.spritePj2, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
+        this.modifyPosition();
+      }
+      if(this.direction===-1){
+        this.ctx.drawImage(this.spritePj2Left, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
+        this.modifyPosition();
+      }
+      if(this.direction===1){
+        this.ctx.drawImage(this.spritePj2Right, this.position, 0, this.sizeX, this.sizeY, this.x - this.sizeX/2, this.y, this.sizeX, this.sizeY);
+        this.modifyPosition();
+      }
     }
   
   }

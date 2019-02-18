@@ -36,7 +36,8 @@ const main = () => {
     const canvasElement = document.querySelector('canvas');
     canvasElement.setAttribute('width',width);
     canvasElement.setAttribute('height',height);
-    
+    let body = document.querySelector("body");
+    body.removeAttribute("style");
     const game = new Game(canvasElement);
     game.gameOverCallback(buildGameOver);
     game.updateDom(updateDom)
@@ -91,7 +92,6 @@ const main = () => {
     `);
     let scoreNum = document.querySelector('.score-num');
     scoreNum.innerHTML = score;
-    console.log('Game Over' + score);
     const restartButton = document.querySelector('button');
     restartButton.addEventListener('click',buildGameScreen);
   }

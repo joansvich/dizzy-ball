@@ -10,11 +10,12 @@ class Game {
     this.posY = 0;
     this.cont = 0;
     this.gameIsOver = false;
-    this.level = 1;
+    this.level = 2;
     this.levelNum = 1;
     this.levelBool = false;
     this.isLevelMax = false;
     this.switchBlocks = true;
+    this.body = document.querySelector("body");
   };
 
 
@@ -31,7 +32,17 @@ class Game {
       this.destroyBlocks();
       this.updateScore();
       this.levelMax();
-      
+      if(this.isLevelMax === true){
+        this.body.setAttribute("style", `
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg); 
+            -o-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+            transition-duration: 10s;
+        `);
+        this.isLevelMax=false;
+      }
     
       if(!this.gameIsOver){
         window.requestAnimationFrame(loop);
@@ -80,14 +91,11 @@ class Game {
         this.blocks.push(block1);
         this.blocks.push(block2);
       }
-      
     }
-  
   }
 
   levelMax(){
     if(this.levelNum === 2 && !this.ball2){
-      //this.isLevelMax = true;
       this.ball2 = new Ball(this.canvas,2);
     }
   }
@@ -110,32 +118,37 @@ class Game {
   }
 
   updateScore(){
-    if (this.ball.puntuation%4===0 && this.level<2.75){
+    if (this.ball.puntuation%4===0 && this.level<3.75){
       if(this.levelBool){
+        console.log(this.levelBool);
+        console.log(this.level);
         this.level = this.level+0.25;
         this.levelBool = false;
       }
     }
-    if (this.level === 2){
-      this.ball.speed = 5;
+    if(this.levelNum>=3){
+      this.ball.speed === 7;
+      this.ball2.speed === 7;
     }
 
     switch(this.level){
-      case 1: this.levelNum = 1;
+      case 2: this.levelNum = 1;
       break;
-      case 1.25: this.levelNum = 2;
+      case 2.25: this.levelNum = 2;
       break;
-      case 1.50: this.levelNum = 3;
+      case 2.50: this.levelNum = 3;
+      this.isLevelMax = true;
       break;
-      case 1.75: this.levelNum = 4;
+      case 2.75: this.levelNum = 4;
       break;
-      case 2: this.levelNum = 5;
+      case 3: this.levelNum = 5;
       break;
-      case 2.25: this.levelNum = 6;
+      case 3.25: this.levelNum = 6;
+      this.isLevelMax = true;
       break;
-      case 2.50: this.levelNum = 7;
+      case 3.50: this.levelNum = 7;
       break;
-      case 2.75: this.levelNum = 'MAXIIIMUM!'
+      case 3.75: this.levelNum = 'MAXIIIMUM!';
       break;
     }
   }
@@ -177,6 +190,7 @@ class Game {
       this.blocks.forEach((block) => {
         if(this.ball.checkCollisionBlocks(block)){
           console.log('You lose');
+          this.isLevelMax = false;
           this.cont = 0;
           this.posY = 0;
           this.lose(this.ball.puntuation);
@@ -187,6 +201,7 @@ class Game {
         if(this.ball2){
           if(this.ball2.checkCollisionBlocks(block)){
             console.log('You lose');
+            this.isLevelMax = false;
             this.cont = 0;
             this.posY = 0;
             this.lose(this.ball.puntuation);
@@ -198,6 +213,7 @@ class Game {
     this.blocks.forEach((block) => {
       if(this.ball.checkCollisionBlocks(block)){
         console.log('You lose');
+        this.isLevelMax = false;
         this.cont = 0;
         this.posY = 0;
         this.lose(this.ball.puntuation);
@@ -211,6 +227,7 @@ class Game {
   }
 
   gameOverCallback(callback){
+
     this.lose = callback;
   }
 

@@ -9,6 +9,8 @@ class Block {
     this.posY = posY;
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
+    this.blockBg = document.getElementById('block-bg');
+    this.blockBg2 = document.getElementById('block-bg2');
   }
 
   update(level){
@@ -16,10 +18,15 @@ class Block {
   };
 
   draw(){
-    this.ctx.fillStyle = this.color;
     let sizeX = this.xFinal-this.xInicio;
-    this.ctx.fillRect(this.xInicio,this.posY,sizeX,this.y);
-    this.ctx.stroke();
+    if(this.color==='red'){
+      this.ctx.drawImage(this.blockBg, this.xInicio, this.posY, sizeX, this.y);
+    }
+    if(this.color ==='green'){
+      this.ctx.drawImage(this.blockBg2, this.xInicio, this.posY, sizeX, this.y);
+    }
+    
+    
   };
 
 }

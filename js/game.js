@@ -18,7 +18,7 @@ class Game {
     this.contEnemies = 0;
     this.lives = 3;
     this.body = document.querySelector("body");
-    this.gameSong = new Audio('../sounds/song-game.m4a');
+    this.gameSong = new Audio('../sounds/song-game.mov');
   };
 
 

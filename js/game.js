@@ -92,6 +92,10 @@ class Game {
       this.enemies.push(enemie);
     }
 
+    if(this.contEnemies%800===0 && !this.ball2 && this.contEnemies != 0){
+      this.ball2 = new Ball(this.canvas,2);
+    }
+
     if(this.contEnemies%1000===0 && this.contEnemies != 0){
       this.rotateCanvas();
     }
@@ -100,21 +104,18 @@ class Game {
       this.initialRotate();
     }
 
-    if(this.contEnemies%800===0 && !this.ball2 && this.contEnemies != 0){
-      this.ball2 = new Ball(this.canvas,2);
-    }
   }
 
   rotateCanvas() {
     this.body.setAttribute("style", `
-          @media (min-width: 600px) {
+          
             -webkit-transform: rotate(360deg);
             -moz-transform: rotate(360deg); 
             -o-transform: rotate(360deg);
             -ms-transform: rotate(360deg);
             transform: rotate(360deg);
             transition-duration: 10s;
-          }
+          
         `);
   }
 

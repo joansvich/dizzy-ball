@@ -12,14 +12,15 @@ html {
 body {
   margin: 0;
   padding: 0;
-  
+  background-image: url("../images/bg-body.png");
+  background-size: 100%;
 }
 
 .wrapper {
   overflow: hidden;
 }
 
-.sliding-background {
+/*.sliding-background {
   position: fixed;
   height: 768px;
   width: 4098px;
@@ -36,7 +37,7 @@ body {
   100%{
     transform: translate3d(-1366px, 0, 0);
   }
-}
+}*/
 
 
 /* ---- typography ---- */
@@ -84,7 +85,7 @@ p {
   margin: 0 auto;
   max-width: 400px;
   height: 90vh;
-  background: url('../images/bg-initial.png');
+  background: url('../images/bg-gamescreen.png');
   background-position: bottom;
 }
 

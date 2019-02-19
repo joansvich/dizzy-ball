@@ -19,13 +19,15 @@ class Game {
     this.lives = 3;
     this.body = document.querySelector("body");
     this.gameSong = new Audio('./sounds/song-game.mov');
+    this.bgGame = document.querySelector(".game-screen");
+    this.bgContainer = document.querySelector(".container");
   };
 
 //<link rel="preload" href="./sounds/goal.mov" as="audio">
   startLoop(){
     this.gameSong.play();
     this.player = new Player(this.canvas,1);
-
+    this.bgContainer.style.background = 'url("")';
     const loop = () => {
 
       this.updateDom();
@@ -184,6 +186,7 @@ class Game {
         this.level = this.level+0.25;
         this.levelNum++;
         this.levelBool = false;
+        this.bgGame.style.background = `url(../images/bg-level${this.levelNum}.png) bottom`;
       }
     }
     if(this.levelNum>=3){

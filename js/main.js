@@ -11,11 +11,12 @@ const main = () => {
 
   const buildSplashScreen = () => {
     const splashScreen = buildDom(`
+    
       <img id="logo" src="./images/logo.png">
       <button id="startButton"><span>Start</span></button>
       <button id="rulesButton"><span>Rules</span></button>
+    
     `);
-    console.log(navigator.platform);
     const startButton = document.querySelector('#startButton');
     startButton.addEventListener('click',buildGameScreen);
 
@@ -28,7 +29,6 @@ const main = () => {
       <section class="game-screen">
         <div class="info-text">
           <p class="score-text">Score: </p><p class="score-num">0</p>
-          <p class="level-text">Velocity: </p><p class="level-num">0</p>
         </div>
         <canvas></canvas>
         <div id="button-on-mobile"><button id="btLeft"></button><button id="btRight"></button></div>
@@ -48,8 +48,6 @@ const main = () => {
     game.startLoop();
     function updateDom(){
       let scoreNum = document.querySelector('.score-num');
-      let levelNum = document.querySelector('.level-num');
-      levelNum.innerHTML = game.levelNum;
       scoreNum.innerHTML = game.player.puntuation;
     }
     

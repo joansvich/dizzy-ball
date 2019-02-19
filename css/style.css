@@ -24,7 +24,7 @@ body {
   height: 768px;
   width: 4098px;
   background-image: url("../images/bg-loop.png");
-	background-repeat: repeat-x;
+	background-repeat: repeat;
   animation: slide 40s linear infinite;
   z-index: -1;
 }
@@ -84,7 +84,8 @@ p {
   margin: 0 auto;
   max-width: 400px;
   height: 90vh;
-  background-color: azure;
+  background: url('../images/bg-initial.png');
+  background-position: bottom;
 }
 
 #rules {
@@ -120,8 +121,13 @@ p {
   padding: auto;
   height: 90vh;
   width: 400px;
-  background-image: url("../images/bg-kitchen.jpg");
+  background: url('../images/bg-level1.png');
   background-size: 400px 90vh;
+  background-position: bottom;
+}
+
+#initialSplash {
+  background: url('../images/bg-gamescreen.png');
 }
 
 .info-text {
@@ -162,6 +168,7 @@ p {
 #logo {
   width: 256px;
   align-self: center;
+  margin-top: -280px;
 }
 
 
@@ -183,7 +190,7 @@ p {
 #bern{
     width:46px;
     height:94px;
-    margin:auto;  
+    margin:auto;   
     background: red;/* Temporal, sólo para guiarnos */
   
 }

@@ -186,7 +186,7 @@ class Game {
         this.level = this.level+0.25;
         this.levelNum++;
         this.levelBool = false;
-        this.bgGame.style.background = `url(../images/bg-level${this.levelNum}.png) bottom`;
+        this.bgGame.style.background = `url(./images/bg-level${this.levelNum}.png) bottom`;
       }
     }
     if(this.levelNum>=3){

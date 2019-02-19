@@ -29,7 +29,7 @@ class Game {
       this.updateDom();
       this.createBlocks();
       this.randomEnemies();
-      //this.checkAllCollisions();
+      this.checkAllCollisions();
       this.updateCanvas();
       this.clearCanvas();
       this.drawCanvas();
@@ -251,10 +251,7 @@ class Game {
     this.enemies.forEach((enemie,index) => {
       if(this.player.checkCollisionKnife(enemie)){
         this.enemies.splice(index,1);
-        this.lives--;
-        if(this.lives===0){
-          this.resetGameOnLose();
-        }
+        this.player.gainPoints(-2);
         console.log('Knife damn');
       }
     })

@@ -13,7 +13,7 @@ class Enemie {
   }
 
   update(){
-    this.posY = this.posY + 10;
+    this.posY = this.posY + 5;
   }
 
   draw(){

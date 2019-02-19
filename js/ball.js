@@ -97,6 +97,20 @@ class Ball {
     }
 
     return false;
+    
+  }
+
+  checkCollisionKnife(knife){
+    const collideRight = knife.posX < this.x+this.sizeX/2;
+    const collideLeft = knife.posX+knife.sizeX > this.x-this.sizeX/2;
+    const collideTop = knife.posY+knife.sizeY/2 > this.y;
+    const collideBottom = knife.posY < this.y+this.sizeY/2;
+
+    if(collideRight && collideLeft && collideTop && collideBottom){
+      return true;
+    }
+
+    return false;
 
   }
 

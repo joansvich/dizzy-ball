@@ -29,6 +29,7 @@ const main = () => {
         <div class="info-text">
           <p class="score-text">Score: </p><p class="score-num">0</p>
           <p class="level-text">Level: </p><p class="level-num">0</p>
+          <p class="lives-text">Lives: </p><p class="lives-num">0</p>
         </div>
         <canvas></canvas>
         <div id="button-on-mobile"><button id="btLeft"></button><button id="btRight"></button></div>
@@ -49,8 +50,10 @@ const main = () => {
     function updateDom(){
       let scoreNum = document.querySelector('.score-num');
       let levelNum = document.querySelector('.level-num');
+      let livesNum = document.querySelector('.lives-num');
       levelNum.innerHTML = game.levelNum;
       scoreNum.innerHTML = game.ball.puntuation;
+      livesNum.innerHTML = game.lives;
     }
     
   

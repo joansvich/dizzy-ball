@@ -14,9 +14,10 @@ class Game {
     this.level = 2;
     this.levelNum = 1;
     this.levelBool = false;
-    this.isLevelMax = false;
+    //this.isLevelMax = false;
     this.switchBlocks = true;
     this.contEnemies = 0;
+    this.lives = 3;
     this.body = document.querySelector("body");
   };
 
@@ -34,20 +35,6 @@ class Game {
       this.drawCanvas();
       this.destroyBlocks();
       this.updateScore();
-      this.levelMax();
-      
-      if(this.isLevelMax === true){
-        this.body.setAttribute("style", `
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg); 
-            -o-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
-            transition-duration: 10s;
-        `);
-        this.isLevelMax=false;
-      }
-    
       if(!this.gameIsOver){
         window.requestAnimationFrame(loop);
       }
@@ -99,18 +86,40 @@ class Game {
   }
 
   randomEnemies() {
-    if(this.contEnemies%200===0){
+    if(this.contEnemies%600===0 && this.contEnemies != 0){
       let posXEnemie = Math.random()*this.canvas.width-40;
       let enemie = new Enemie(posXEnemie,0,this.canvas);
       this.enemies.push(enemie);
-      console.log('Kniiiveee');
+    }
+
+    if(this.contEnemies%1000===0 && this.contEnemies != 0){
+      this.rotateCanvas();
+    }
+
+    if(this.contEnemies%1900===0 && this.contEnemies != 0){
+      this.initialRotate();
+    }
+
+    if(this.contEnemies%800===0 && !this.ball2 && this.contEnemies != 0){
+      this.ball2 = new Ball(this.canvas,2);
     }
   }
 
-  levelMax(){
-    if(this.levelNum === 2 && !this.ball2){
-      this.ball2 = new Ball(this.canvas,2);
-    }
+  rotateCanvas() {
+    this.body.setAttribute("style", `
+          @media (min-width: 600px) {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg); 
+            -o-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+            transition-duration: 10s;
+          }
+        `);
+  }
+
+  initialRotate() {
+    this.body.removeAttribute("style");
   }
 
   updateCanvas(){
@@ -137,11 +146,12 @@ class Game {
   }
 
   updateScore(){
-    if (this.ball.puntuation%4===0 && this.level<3.75){
+    if (this.ball.puntuation%6===0 && this.level<3.75){
       if(this.levelBool){
         console.log(this.levelBool);
         console.log(this.level);
         this.level = this.level+0.25;
+        this.levelNum++;
         this.levelBool = false;
       }
     }
@@ -150,26 +160,6 @@ class Game {
       this.ball2.speed === 7;
     }
 
-    switch(this.level){
-      case 2: this.levelNum = 1;
-      break;
-      case 2.25: this.levelNum = 2;
-      break;
-      case 2.50: this.levelNum = 3;
-      this.isLevelMax = true;
-      break;
-      case 2.75: this.levelNum = 4;
-      break;
-      case 3: this.levelNum = 5;
-      break;
-      case 3.25: this.levelNum = 6;
-      this.isLevelMax = true;
-      break;
-      case 3.50: this.levelNum = 7;
-      break;
-      case 3.75: this.levelNum = 'MAXIIIMUM!';
-      break;
-    }
   }
 
   clearCanvas(){
@@ -242,6 +232,20 @@ class Game {
         this.posY = 0;
         this.lose(this.ball.puntuation);
         this.gameIsOver = true;
+      }
+    })
+    this.enemies.forEach((enemie,index) => {
+      if(this.ball.checkCollisionKnife(enemie)){
+        this.enemies.splice(index,1);
+        this.lives--;
+        if(this.lives===0){
+          this.isLevelMax = false;
+          this.cont = 0;
+          this.posY = 0;
+          this.lose(this.ball.puntuation);
+          this.gameIsOver = true;
+        }
+        console.log('Knife damn');
       }
     })
   }

@@ -27,7 +27,7 @@ class Game {
   startLoop(){
     this.gameSong.play();
     this.player = new Player(this.canvas,1);
-    this.bgContainer.style.background = 'url("../images/bg-blank.png")';
+    this.bgContainer.style.background = 'url("./images/bg-blank.png")';
     const loop = () => {
 
       this.updateDom();

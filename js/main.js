@@ -43,7 +43,6 @@ const main = () => {
     let body = document.querySelector("body");
     body.removeAttribute("style");
     const game = new Game(canvasElement);
-    game.gameSong.play();
     game.gameOverCallback(buildGameOver);
     game.updateDom(updateDom)
     game.startLoop();

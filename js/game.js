@@ -18,12 +18,14 @@ class Game {
     this.contEnemies = 0;
     this.lives = 3;
     this.body = document.querySelector("body");
-    this.gameSong = new Audio('../sounds/goal.mov');
+    this.gameSong = new Audio('../sounds/song-game.mov');
   };
 
-
+//<link rel="preload" href="./sounds/goal.mov" as="audio">
   startLoop(){
+    this.gameSong.play();
     this.player = new Player(this.canvas,1);
+
     const loop = () => {
 
       this.updateDom();

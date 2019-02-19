@@ -29,10 +29,6 @@ h1 {
   align-self: center;
 }
 
-h2 {}
-
-h3 {}
-
 p {
   margin: 0;
   align-self: center;
@@ -102,7 +98,7 @@ p {
   padding: auto;
   height: 90vh;
   width: 400px;
-  background-image: url("../bg-kitchen.jpg");
+  background-image: url("../images/bg-kitchen.jpg");
   background-size: 400px 90vh;
 }
 
@@ -159,7 +155,7 @@ p {
 #imageDemoSprite {
   height: 94px;
   width: 46px;
-  background: url("../sprite-pj.png") 0px 0px;
+  background: url("../images/sprite-pj.png") 0px 0px;
 }
 
 #bern{
@@ -243,5 +239,5 @@ button:hover span:after {
 /* ---- section ---- */
 
 canvas {
-  background-image: url("../");
+  background-image: url("../images/");
 }

@@ -11,7 +11,7 @@ const main = () => {
 
   const buildSplashScreen = () => {
     const splashScreen = buildDom(`
-      <img id="logo" src="./logo.png">
+      <img id="logo" src="./images/logo.png">
       <button id="startButton"><span>Start</span></button>
       <button id="rulesButton"><span>Rules</span></button>
     `);
@@ -52,7 +52,7 @@ const main = () => {
       let levelNum = document.querySelector('.level-num');
       let livesNum = document.querySelector('.lives-num');
       levelNum.innerHTML = game.levelNum;
-      scoreNum.innerHTML = game.ball.puntuation;
+      scoreNum.innerHTML = game.player.puntuation;
       livesNum.innerHTML = game.lives;
     }
     
@@ -61,42 +61,42 @@ const main = () => {
     const setPlayerDirection = (event) => {
       console.log('hi');
       if (event.code === 'ArrowLeft'){
-        game.ball.setDirection(-1);
+        game.player.setDirection(-1);
       }
       if (event.code === 'ArrowRight'){
-        game.ball.setDirection(1);
+        game.player.setDirection(1);
       }
       if(event.code === 'Space'){
         alert('PAUSE');
       }
-      if(game.ball2) {
+      if(game.player2) {
         if (event.code === 'KeyA'){
-          game.ball2.setDirection(-1);
+          game.player2.setDirection(-1);
         }
         if (event.code === 'KeyD'){
-          game.ball2.setDirection(1);
+          game.player2.setDirection(1);
         }
       }
     }
     const setPlayerDirectionToZero = (event) =>{
       console.log(event.code)
       if(event.code === 'ArrowLeft'||event.code === 'ArrowRight'){
-        game.ball.setDirection(0);
+        game.player.setDirection(0);
       }
       if(event.code === 'KeyA' || event.code === 'KeyD'){
-        if(game.ball2){
-          game.ball2.setDirection(0);
+        if(game.player2){
+          game.player2.setDirection(0);
         }
       }
     }  
     const moveLeft = () => {
-      game.ball.setDirection(-1);
+      game.player.setDirection(-1);
     }
     const moveRight = () => {
-      game.ball.setDirection(1);
+      game.player.setDirection(1);
     }
     const moveToZero = () => {
-      game.ball.setDirection(0);
+      game.player.setDirection(0);
     }
 
     document.addEventListener('keydown',setPlayerDirection);

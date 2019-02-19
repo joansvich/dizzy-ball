@@ -1,6 +1,6 @@
 'use strict';
 
-class Ball {
+class Player {
 
   constructor(canvas,pj){
     this.sizeX = 46;

@@ -4,7 +4,7 @@ class Game {
   constructor(canvas){
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
-    this.ball;
+    this.player;
     this.blocks = [];
     this.blocks2 = [];
     this.enemies = [];
@@ -14,7 +14,6 @@ class Game {
     this.level = 2;
     this.levelNum = 1;
     this.levelBool = false;
-    //this.isLevelMax = false;
     this.switchBlocks = true;
     this.contEnemies = 0;
     this.lives = 3;
@@ -23,7 +22,7 @@ class Game {
 
 
   startLoop(){
-    this.ball = new Ball(this.canvas,1);
+    this.player = new Player(this.canvas,1);
     const loop = () => {
 
       this.updateDom();
@@ -44,7 +43,7 @@ class Game {
 
   createBlocks(){
     if(this.cont>250|| this.cont===0){
-      if(this.ball2){
+      if(this.player2){
         if(this.switchBlocks){
           this.cont=0;
           const xFinal = Math.random()*this.canvas.width-80;
@@ -92,8 +91,8 @@ class Game {
       this.enemies.push(enemie);
     }
 
-    if(this.contEnemies%800===0 && !this.ball2 && this.contEnemies != 0){
-      this.ball2 = new Ball(this.canvas,2);
+    if(this.contEnemies%800===0 && !this.player2 && this.contEnemies != 0){
+      this.player2 = new Player(this.canvas,2);
     }
 
     if(this.contEnemies%1000===0 && this.contEnemies != 0){
@@ -124,14 +123,14 @@ class Game {
   }
 
   updateCanvas(){
-    this.ball.update();
-    if(this.ball2){
-      this.ball2.update();
+    this.player.update();
+    if(this.player2){
+      this.player2.update();
     }
     this.blocks.forEach((block) => {
       block.update(this.level);
     })
-    if(this.ball2){
+    if(this.player2){
       this.blocks2.forEach((block) => {
         block.update(this.level);
       })
@@ -147,7 +146,7 @@ class Game {
   }
 
   updateScore(){
-    if (this.ball.puntuation%6===0 && this.level<3.75){
+    if (this.player.puntuation%6===0 && this.level<3.75){
       if(this.levelBool){
         console.log(this.levelBool);
         console.log(this.level);
@@ -157,8 +156,8 @@ class Game {
       }
     }
     if(this.levelNum>=3){
-      this.ball.speed === 7;
-      this.ball2.speed === 7;
+      this.player.speed === 7;
+      this.player2.speed === 7;
     }
 
   }
@@ -168,14 +167,14 @@ class Game {
   }
 
   drawCanvas(){
-    this.ball.draw();
-    if(this.ball2){
-      this.ball2.draw();
+    this.player.draw();
+    if(this.player2){
+      this.player2.draw();
     }
     this.blocks.forEach((block) => {
       block.draw();
     })
-    if(this.ball2){
+    if(this.player2){
       this.blocks2.forEach((block) => {
         block.draw();
       })
@@ -193,57 +192,57 @@ class Game {
         this.blocks.splice(index,1);
         console.log('Destrooy!');
         this.levelBool = true;
-        this.ball.gainPoints(1);
+        this.player.gainPoints(1);
       }
     })
   }
 
   checkAllCollisions(){
-    this.ball.checkScreen();
-    if(this.ball2){
-      this.ball2.checkScreen();
+    this.player.checkScreen();
+    if(this.player2){
+      this.player2.checkScreen();
       this.blocks.forEach((block) => {
-        if(this.ball.checkCollisionBlocks(block)){
+        if(this.player.checkCollisionBlocks(block)){
           console.log('You lose');
           this.isLevelMax = false;
           this.cont = 0;
           this.posY = 0;
-          this.lose(this.ball.puntuation);
+          this.lose(this.player.puntuation);
           this.gameIsOver = true;
         }
       })
       this.blocks2.forEach((block) =>{
-        if(this.ball2){
-          if(this.ball2.checkCollisionBlocks(block)){
+        if(this.player2){
+          if(this.player2.checkCollisionBlocks(block)){
             console.log('You lose');
             this.isLevelMax = false;
             this.cont = 0;
             this.posY = 0;
-            this.lose(this.ball.puntuation);
+            this.lose(this.player.puntuation);
             this.gameIsOver = true;
           }
         }
       })
     }
     this.blocks.forEach((block) => {
-      if(this.ball.checkCollisionBlocks(block)){
+      if(this.player.checkCollisionBlocks(block)){
         console.log('You lose');
         this.isLevelMax = false;
         this.cont = 0;
         this.posY = 0;
-        this.lose(this.ball.puntuation);
+        this.lose(this.player.puntuation);
         this.gameIsOver = true;
       }
     })
     this.enemies.forEach((enemie,index) => {
-      if(this.ball.checkCollisionKnife(enemie)){
+      if(this.player.checkCollisionKnife(enemie)){
         this.enemies.splice(index,1);
         this.lives--;
         if(this.lives===0){
           this.isLevelMax = false;
           this.cont = 0;
           this.posY = 0;
-          this.lose(this.ball.puntuation);
+          this.lose(this.player.puntuation);
           this.gameIsOver = true;
         }
         console.log('Knife damn');

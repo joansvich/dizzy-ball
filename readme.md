@@ -1,4 +1,4 @@
-# Dizzy Ball
+# Dizzy Player
 
 ## Descripción
 
@@ -19,7 +19,7 @@ Que la bola llegue a la máxima distancia posible sin colisionar con los objetos
 
 - Main
 - Game
-- Ball
+- Player
 - Blocks
 - Stars
 
@@ -36,7 +36,7 @@ Que la bola llegue a la máxima distancia posible sin colisionar con los objetos
   - clearCanvas()
   - drawCanvas()
   - checkCollisions()
-- Ball
+- Player
   - update()
   - draw()
   - setDirection()

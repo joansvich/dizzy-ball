@@ -18,6 +18,7 @@ class Game {
     this.contEnemies = 0;
     this.lives = 3;
     this.body = document.querySelector("body");
+    this.gameSong = new Audio('../sounds/song-game.m4a');
   };
 
 
@@ -28,7 +29,7 @@ class Game {
       this.updateDom();
       this.createBlocks();
       this.randomEnemies();
-      this.checkAllCollisions();
+      //this.checkAllCollisions();
       this.updateCanvas();
       this.clearCanvas();
       this.drawCanvas();
@@ -85,36 +86,63 @@ class Game {
   }
 
   randomEnemies() {
-    if(this.contEnemies%600===0 && this.contEnemies != 0){
+    if(this.contEnemies%380===0 && this.contEnemies != 0){
       let posXEnemie = Math.random()*this.canvas.width-40;
       let enemie = new Enemie(posXEnemie,0,this.canvas);
       this.enemies.push(enemie);
     }
 
-    if(this.contEnemies%800===0 && !this.player2 && this.contEnemies != 0){
+    if(this.contEnemies%750===0 && !this.player2 && this.contEnemies != 0){
       this.player2 = new Player(this.canvas,2);
     }
+    
+    
+    if(this.contEnemies>2350){
+      this.rotateCanvas(45,3);
+      if(this.contEnemies>2650){
+        this.rotateCanvas(-45,6);
+      }
+      if(this.contEnemies>2900){
+        this.rotateCanvas(45,6);
+      }
+      if(this.contEnemies>3200){
+        this.rotateCanvas(180,8);
+      }
+      if(this.contEnemies>4000){
+        this.rotateCanvas(0,7);
+      }
 
-    if(this.contEnemies%1000===0 && this.contEnemies != 0){
-      this.rotateCanvas();
+      if(this.contEnemies>5150){
+        this.rotateCanvas(90,4);
+      }
+
+      if(this.contEnemies>5730){
+        this.rotateCanvas(-90,6);
+      }
+
+      if(this.contEnemies>6210){
+        this.rotateCanvas(-180,3);
+      }
+
+      if(this.contEnemies>7000){
+        this.rotateCanvas(0,5);
+      }
+
+      if(this.contEnemies>7430){
+        this.rotateCanvas(720,15);
+      }
     }
-
-    if(this.contEnemies%1900===0 && this.contEnemies != 0){
-      this.initialRotate();
-    }
-
+  
   }
 
-  rotateCanvas() {
-    this.body.setAttribute("style", `
-          
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg); 
-            -o-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
-            transition-duration: 10s;
-          
+  rotateCanvas(num,second) {
+    this.body.setAttribute("style", ` 
+            -webkit-transform: rotate(${num}deg);
+            -moz-transform: rotate(${num}deg); 
+            -o-transform: rotate(${num}deg);
+            -ms-transform: rotate(${num}deg);
+            transform: rotate(${num}deg);
+            transition-duration: ${second}s;
         `);
   }
 
@@ -143,6 +171,7 @@ class Game {
     this.cont = this.cont + this.level;
     this.posY = this.posY + this.level;
     this.contEnemies++;
+    console.log(this.contEnemies);
   }
 
   updateScore(){
@@ -203,35 +232,20 @@ class Game {
       this.player2.checkScreen();
       this.blocks.forEach((block) => {
         if(this.player.checkCollisionBlocks(block)){
-          console.log('You lose');
-          this.isLevelMax = false;
-          this.cont = 0;
-          this.posY = 0;
-          this.lose(this.player.puntuation);
-          this.gameIsOver = true;
+          this.resetGameOnLose();
         }
       })
       this.blocks2.forEach((block) =>{
         if(this.player2){
           if(this.player2.checkCollisionBlocks(block)){
-            console.log('You lose');
-            this.isLevelMax = false;
-            this.cont = 0;
-            this.posY = 0;
-            this.lose(this.player.puntuation);
-            this.gameIsOver = true;
+            this.resetGameOnLose();
           }
         }
       })
     }
     this.blocks.forEach((block) => {
       if(this.player.checkCollisionBlocks(block)){
-        console.log('You lose');
-        this.isLevelMax = false;
-        this.cont = 0;
-        this.posY = 0;
-        this.lose(this.player.puntuation);
-        this.gameIsOver = true;
+        this.resetGameOnLose();
       }
     })
     this.enemies.forEach((enemie,index) => {
@@ -239,11 +253,7 @@ class Game {
         this.enemies.splice(index,1);
         this.lives--;
         if(this.lives===0){
-          this.isLevelMax = false;
-          this.cont = 0;
-          this.posY = 0;
-          this.lose(this.player.puntuation);
-          this.gameIsOver = true;
+          this.resetGameOnLose();
         }
         console.log('Knife damn');
       }
@@ -255,9 +265,17 @@ class Game {
   }
 
   gameOverCallback(callback){
-
+    
     this.lose = callback;
   }
 
+  resetGameOnLose(){
+    this.gameSong.pause();
+    this.isLevelMax = false;
+    this.cont = 0;
+    this.posY = 0;
+    this.lose(this.player.puntuation);
+    this.gameIsOver = true;
+  }
 
 }

@@ -15,6 +15,29 @@ body {
   
 }
 
+.wrapper {
+  overflow: hidden;
+}
+
+.sliding-background {
+  position: fixed;
+  height: 768px;
+  width: 4098px;
+  background-image: url("../images/bg-loop.png");
+	background-repeat: repeat-x;
+  animation: slide 40s linear infinite;
+  z-index: -1;
+}
+
+@keyframes slide {
+  0%{
+    transform: translate3d(0, 0, 0);
+  }
+  100%{
+    transform: translate3d(-1366px, 0, 0);
+  }
+}
+
 
 /* ---- typography ---- */
 
@@ -62,7 +85,6 @@ p {
   max-width: 400px;
   height: 90vh;
   background-color: azure;
-  border: 1px dotted blue;
 }
 
 #rules {
@@ -168,28 +190,12 @@ p {
 
 
 
-/* ---- components ---- */
-
-#select {
-  align-self: center;
-  border-radius: 4px;
-  background-color: rgb(0, 119, 255);
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 24px;
-  width: 150px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 7px;
-  padding: 5px;
-  display: inline-block;
-}
+/* ---- components ---- */ 
 
 button {
   align-self: center;
   border-radius: 4px;
-  background-color: rgb(0, 119, 255);
+  background-color: rgb(255, 195, 66);
   border: none;
   color: #FFFFFF;
   text-align: center;

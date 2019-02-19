@@ -28,8 +28,7 @@ const main = () => {
       <section class="game-screen">
         <div class="info-text">
           <p class="score-text">Score: </p><p class="score-num">0</p>
-          <p class="level-text">Level: </p><p class="level-num">0</p>
-          <p class="lives-text">Lives: </p><p class="lives-num">0</p>
+          <p class="level-text">Velocity: </p><p class="level-num">0</p>
         </div>
         <canvas></canvas>
         <div id="button-on-mobile"><button id="btLeft"></button><button id="btRight"></button></div>
@@ -44,16 +43,15 @@ const main = () => {
     let body = document.querySelector("body");
     body.removeAttribute("style");
     const game = new Game(canvasElement);
+    game.gameSong.play();
     game.gameOverCallback(buildGameOver);
     game.updateDom(updateDom)
     game.startLoop();
     function updateDom(){
       let scoreNum = document.querySelector('.score-num');
       let levelNum = document.querySelector('.level-num');
-      let livesNum = document.querySelector('.lives-num');
       levelNum.innerHTML = game.levelNum;
       scoreNum.innerHTML = game.player.puntuation;
-      livesNum.innerHTML = game.lives;
     }
     
   

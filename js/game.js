@@ -222,8 +222,16 @@ class Game {
 
   destroyBlocks(){
     this.blocks.forEach((block,index) => {
-      if(block.posY >= this.canvas.height){
+      if(block.posY+5 >= this.canvas.height){
         this.blocks.splice(index,1);
+        console.log('Destrooy!');
+        this.levelBool = true;
+        this.player.gainPoints(1);
+      }
+    })
+    this.blocks2.forEach((block,index) => {
+      if(block.posY+5 >= this.canvas.height){
+        this.blocks2.splice(index,1);
         console.log('Destrooy!');
         this.levelBool = true;
         this.player.gainPoints(1);
@@ -272,6 +280,7 @@ class Game {
   }
 
   resetGameOnLose(){
+    this.initialRotate();
     this.gameSong.pause();
     this.isLevelMax = false;
     this.cont = 0;

@@ -20,26 +20,6 @@ body {
   overflow: hidden;
 }
 
-/*.sliding-background {
-  position: fixed;
-  height: 768px;
-  width: 4098px;
-  background-image: url("../images/bg-loop.png");
-	background-repeat: repeat;
-  animation: slide 40s linear infinite;
-  z-index: -1;
-}
-
-@keyframes slide {
-  0%{
-    transform: translate3d(0, 0, 0);
-  }
-  100%{
-    transform: translate3d(-1366px, 0, 0);
-  }
-}*/
-
-
 /* ---- typography ---- */
 
 body {
@@ -57,8 +37,6 @@ p {
   margin: 0;
   align-self: center;
 }
-
-
 
 /* ---- layout ---- */
 
@@ -84,7 +62,7 @@ p {
   flex-direction: column;
   margin: 0 auto;
   max-width: 400px;
-  height: 90vh;
+  height: 700px;
   background: url('../images/bg-gamescreen.png');
   background-position: bottom;
 }
@@ -96,7 +74,7 @@ p {
   background-image: url('../images/bg-rules.png');
   margin: 0 auto;
   max-width: 400px;
-  height: 90vh;
+  height: 700px;
   font-family: 'Nova Round', cursive;
   color: #3f3844;
 }
@@ -130,10 +108,10 @@ p {
 .game-screen {
   margin: auto;
   padding: auto;
-  height: 90vh;
+  height: 700px;
   width: 400px;
   background: url('../images/bg-level1.png');
-  background-size: 400px 90vh;
+  background-size: 400px 700px;
   background-position: bottom;
 }
 

@@ -128,7 +128,7 @@ const main = () => {
       <section>
         <div>
           <p><span>OBJETIVO: </span></p>
-          <p>Llegar lo más lejos sin colisionar contra los bloques</p>
+          <p>Llegar lo más lejos sin colisionar contra los bloques ni los cuchillos</p>
         </div>
       </section>
       <section>

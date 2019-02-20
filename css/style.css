@@ -44,7 +44,7 @@ body {
 
 body {
   color: #111;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Nova Round', cursive;
   font-size: 16px;
   line-height: 147%;
 }
@@ -215,7 +215,7 @@ button {
   border-radius: 4px;
   background-color: rgb(255, 195, 66);
   border: none;
-  color: #FFFFFF;
+  color: #3f3844;
   text-align: center;
   font-size: 24px;
   width: 150px;
@@ -223,6 +223,8 @@ button {
   cursor: pointer;
   margin: 7px;
   padding: 5px;
+  font-family: 'Nova Round', cursive;
+  
 }
 
 button span {

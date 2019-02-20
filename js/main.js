@@ -107,9 +107,11 @@ const main = () => {
   
   const buildGameOver = (score) => {
     const gameOver = buildDom(`
+    <div id="rules">
       <h1>Game Over</h1> 
       <p>Your Score: </p><p class="score-num">0</p>
       <button><span>Restart</span></button>
+    </div>
     `);
     let scoreNum = document.querySelector('.score-num');
     scoreNum.innerHTML = score;
@@ -120,38 +122,40 @@ const main = () => {
   const buildRulesScreen = () => {
     const rulesScreen = buildDom(`
     <div id="rules">
-      <h1>Rules</h1>
       <section>
-      <div>
-      <p><span>OBJETIVO: </span></p>
-      <p>Llegar lo más lejos sin colisionar contra los bloques</p>
-      </div>
+        <h1>Rules</h1>
       </section>
       <section>
-      <div>
-      <p><span>CONTROLES:</span></p>
-      <ul>
-        <li>Flechas derecha e izquierda para mover el personaje pepinillo</li>
-        <li>Letras A y D para mover el personaje berenjena</li>
-      </ul>
-      </div>
+        <div>
+          <p><span>OBJETIVO: </span></p>
+          <p>Llegar lo más lejos sin colisionar contra los bloques</p>
+        </div>
       </section>
       <section>
-      <div>
-      <p><span>COMPLICACIONES</span></p>
-      <p>Tendrás que tener en cuenta lo siguiente:</p>
-      <ul>
-        <li>El personaje pepinillo es inmune a los bloques lilas</li>
-        <li>El personaje berenjena es inmune a los bloques rojos</li>
-      </ul>
-      </div>
+        <div>
+          <p><span>CONTROLES:</span></p>
+          <ul>
+            <li>Flechas derecha e izquierda para mover el personaje pepinillo</li>
+            <li>Letras A y D para mover el personaje berenjena</li>
+          </ul>
+        </div>
       </section>
-      <p><span>SUERTE!</span></p>
+      <section>
+        <div>
+          <p><span>COMPLICACIONES</span></p>
+          <ul>
+            <li>El personaje pepinillo es inmune a los bloques lilas</li>
+            <li>El personaje berenjena es inmune a los bloques rojos</li>
+          </ul>
+        </div>
+      </section>
       <button id="initialButton"><span>Inicio</span></button>
     </div>
     `);
+    const container = document.querySelector('.container');
     const initialButton = document.querySelector('#initialButton');
     initialButton.addEventListener('click',buildSplashScreen);
+    container.remo
   }
 
   buildSplashScreen();

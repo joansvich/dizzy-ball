@@ -93,18 +93,28 @@ p {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  
+  background-image: url('../images/bg-rules.png');
   margin: 0 auto;
   max-width: 400px;
   height: 90vh;
-  
+  font-family: 'Nova Round', cursive;
+  color: #3f3844;
 }
 
 #rules section {
   background-image: none;
   max-width: 100%;
   height: auto;
+  padding: 5px;
 }
+
+#rules h1 {
+  width: 400px;
+  text-align: center;
+  font-size: 3rem;
+
+}
+
 #rules p{
   padding: 5px;
   width: 400px;

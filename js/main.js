@@ -128,7 +128,7 @@ const main = () => {
       <section>
         <div>
           <p><span>OBJETIVO: </span></p>
-          <p>Llegar lo más lejos sin colisionar contra los bloques ni los cuchillos</p>
+          <p>Llegar lo más lejos sin colisionar contra los bloques</p>
         </div>
       </section>
       <section>
@@ -146,6 +146,7 @@ const main = () => {
           <ul>
             <li>El personaje pepinillo es inmune a los bloques lilas</li>
             <li>El personaje berenjena es inmune a los bloques rojos</li>
+            <li>Los cuchillos restan 2 puntos</li>
           </ul>
         </div>
       </section>

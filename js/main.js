@@ -14,7 +14,7 @@ const main = () => {
     
       <img id="logo" src="./images/logo.png">
       <button id="startButton"><span>Start</span></button>
-      <button id="rulesButton"><span>Rules</span></button>
+      <button id="rulesButton"><span>Reglas</span></button>
     
     `);
     const startButton = document.querySelector('#startButton');
@@ -123,7 +123,7 @@ const main = () => {
     const rulesScreen = buildDom(`
     <div id="rules">
       <section>
-        <h1>Rules</h1>
+        <h1>Reglas</h1>
       </section>
       <section>
         <div>
@@ -150,7 +150,7 @@ const main = () => {
           </ul>
         </div>
       </section>
-      <button id="initialButton"><span>Inicio</span></button>
+      <button id="initialButton"><span>Atrás</span></button>
     </div>
     `);
     const container = document.querySelector('.container');

@@ -29,6 +29,7 @@ const main = () => {
       <section class="game-screen">
         <div class="info-text">
           <p class="score-text">Score: </p><p class="score-num">0</p>
+          <p class="lives-text">Lives: </p><p class="lives-num">0</p>
         </div>
         <canvas></canvas>
         <div id="button-on-mobile"><button id="btLeft"></button><button id="btRight"></button></div>
@@ -48,7 +49,9 @@ const main = () => {
     game.startLoop();
     function updateDom(){
       let scoreNum = document.querySelector('.score-num');
+      let lives = document.querySelector('.lives-num');
       scoreNum.innerHTML = game.player.puntuation;
+      lives.innerHTML = game.lives;
     }
     
   

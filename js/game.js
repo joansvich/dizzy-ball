@@ -19,6 +19,7 @@ class Game {
     this.lives = 3;
     this.body = document.querySelector("body");
     this.gameSong = new Audio('./sounds/song-game.mov');
+    this.doh = new Audio('./sounds/douh.mov');
     this.bgGame = document.querySelector(".game-screen");
     this.bgContainer = document.querySelector(".container");
   };
@@ -243,21 +244,24 @@ class Game {
     this.player.checkScreen();
     if(this.player2){
       this.player2.checkScreen();
-      this.blocks.forEach((block) => {
+      this.blocks.forEach((block,index) => {
         if(this.player.checkCollisionBlocks(block)){
+          this.blocks.splice(index,1);
           this.resetGameOnLose();
         }
       })
-      this.blocks2.forEach((block) =>{
+      this.blocks2.forEach((block,index) =>{
         if(this.player2){
           if(this.player2.checkCollisionBlocks(block)){
+            this.blocks2.splice(index,1);
             this.resetGameOnLose();
           }
         }
       })
     }
-    this.blocks.forEach((block) => {
+    this.blocks.forEach((block,index) => {
       if(this.player.checkCollisionBlocks(block)){
+        this.blocks.splice(index,1);
         this.resetGameOnLose();
       }
     })
@@ -280,13 +284,16 @@ class Game {
   }
 
   resetGameOnLose(){
-    this.initialRotate();
-    this.gameSong.pause();
-    this.isLevelMax = false;
-    this.cont = 0;
-    this.posY = 0;
-    this.lose(this.player.puntuation);
-    this.gameIsOver = true;
+    this.doh.play();
+    this.lives--;
+    if(this.lives===0){
+      this.initialRotate();
+      this.gameSong.pause();
+      this.isLevelMax = false;
+      this.cont = 0;
+      this.posY = 0;
+      this.lose(this.player.puntuation);
+      this.gameIsOver = true;
+    }
   }
-
 }

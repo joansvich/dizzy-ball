@@ -24,7 +24,6 @@ class Game {
     this.bgContainer = document.querySelector(".container");
   };
 
-//<link rel="preload" href="./sounds/goal.mov" as="audio">
   startLoop(){
     this.gameSong.play();
     this.player = new Player(this.canvas,1);

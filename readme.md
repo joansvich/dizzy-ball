@@ -85,7 +85,7 @@ Especificar las url del proyecto y del deploy
 
 [Link Repositorio](http://github.com)
 
-[Link Deploy](http://github.com)
+[Link Deploy](https://joansvich.github.io/vegetables-party/)
 
 ### Slides.com
 
